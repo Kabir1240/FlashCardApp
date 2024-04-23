@@ -1,2 +1,4 @@
-BACKGROUND_COLOR = "#B1DDC6"
+from flash_card_app import FlashCardApp
 
+
+FlashCardApp()
