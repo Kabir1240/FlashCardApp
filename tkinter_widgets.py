@@ -4,12 +4,15 @@ from typing import Dict
 
 class TkinterWidgets:
     def __init__(self, label_dict: Dict[str, Label]|None = None, entry_dict: Dict[str, Entry] | None = None,
-                 button_dict: Dict[str, Button] | None = None, canvas_dict: Dict[str, Canvas] | None = None):
+                 button_dict: Dict[str, Button] | None = None, canvas_dict: Dict[str, Canvas] | None = None,
+                 image_dict: Dict[str, PhotoImage] | None = None):
         """
         allows user to initialize tkinter widgets for their program
         :param label_dict: dictionary of Label objects
         :param entry_dict: dictionary of Entry objects
         :param button_dict: dictionary of button objects
+        :param canvas_dict: dictionary of Canvas objects
+        :param image_dict: dictionary of PhotoImage objects
         """
 
         if label_dict is not None:
@@ -31,6 +34,11 @@ class TkinterWidgets:
             self.canvas_dict = canvas_dict
         else:
             self.canvas_dict = {}
+
+        if image_dict is not None:
+            self.image_dict = image_dict
+        else:
+            self.image_dict = {}
 
     def get_labels(self, key: str | None = None) -> Label | Dict[str, Label]:
         """
@@ -69,12 +77,23 @@ class TkinterWidgets:
         """
         returns Canvas widgets
         :param key: Key for the Canvas. If none is given, the entire dictionary will be returned
-        :return: either a single Canvas if key is given, otherwise the entire Button dictionary
+        :return: either a single Canvas if key is given, otherwise the entire Canvas dictionary
         """
         if key is not None:
             return self.canvas_dict[key]
         else:
             return self.canvas_dict
+
+    def get_images(self, key: str | None = None) -> PhotoImage | Dict[str, Canvas]:
+        """
+        returns PhotoImage widgets
+        :param key: Key for the PhotoImage. If none is given, the entire dictionary will be returned
+        :return: either a single PhotoImage if key is given, otherwise the entire PhotoImage dictionary
+        """
+        if key is not None:
+            return self.image_dict[key]
+        else:
+            return self.image_dict
 
     def add_label(self, key: str, label: Label) -> None:
         """
@@ -112,6 +131,15 @@ class TkinterWidgets:
         """
         self.canvas_dict[key] = canvas
 
+    def add_image(self, key:str, image: PhotoImage) -> None:
+        """
+        adds a single PhotoImage object to the image dictionary at key position
+        :param key: key
+        :param image: PhotoImage object
+        :return: None
+        """
+        self.image_dict[key] = image
+
     def add_label_dict(self, label_dict: Dict[str, Label]) -> None:
         """
         adds all Labels from label_dict to current Label repository
@@ -147,3 +175,12 @@ class TkinterWidgets:
         """
         for (key, value) in canvas_dict.items():
             self.canvas_dict[key] = value
+
+    def add_image_dict(self, image_dict: Dict[str, PhotoImage]) -> None:
+        """
+        adds all canvas' from canvas_dict to current Canvas repository
+        :param image_dict: a dictionary of Canvas objects
+        :return: None
+        """
+        for (key, value) in image_dict.items():
+            self.image_dict[key] = value
