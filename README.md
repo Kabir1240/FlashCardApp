@@ -7,3 +7,5 @@
 huge shoutout to JH4E for the list of Japanese words. I'll leave links to their website and youtube below.  
 site: https://2136flashcards.wixsite.com/mysite  
 youtube: https://www.youtube.com/@JH4Everyone/videos  
+  
+-> Video demonstration: https://youtu.be/Z3GJyHdt2Xk
